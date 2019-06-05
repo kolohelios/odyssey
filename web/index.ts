@@ -1,15 +1,5 @@
-import { Machine } from 'xstate'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import {App} from './App'
 
-const userMachine = Machine({
-  initial: 'loggedOut',
-  states: {
-    loggedIn: {
-      on: {
-        logOut: 'loggedOut'
-      }
-    },
-    loggedOut: {
-
-    }
-  }
-})
+ReactDOM.render(React.createElement(App), document.getElementById('root'))
