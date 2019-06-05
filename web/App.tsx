@@ -1,9 +1,10 @@
 import * as React from 'react'
+import { Hero } from 'components/Hero'
 
 export const App = () => {
   return (
     <div>
-      <h1>Hello</h1>
+      <Hero />
     </div>
   )
 }
