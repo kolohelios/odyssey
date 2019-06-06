@@ -66,9 +66,10 @@ expect.extend({
 })
 
 describe('Home page', () => {
-  let page
+  let page: puppeteer.page
+  let browser: puppeteer.browser
   beforeAll(async () => {
-    const browser = await puppeteer.launch()
+    browser = await puppeteer.launch()
     page = await browser.newPage()
     await page.setViewport({ width: 1280, height: 1024 })
   })
@@ -79,7 +80,11 @@ describe('Home page', () => {
       page,
       `home.accessibility.png`
     )
-
-    expect(accessibilityReport).toHaveNoAccessibilityIssues()
+    try {
+      expect(accessibilityReport).toHaveNoAccessibilityIssues()
+    } finally {
+      await page.close()
+      await browser.close()
+    }
   })
 })
