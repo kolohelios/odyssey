@@ -1,8 +1,4 @@
-import {
-  FuseBox,
-  StyledComponentsPlugin,
-  WebIndexPlugin,
-} from 'fuse-box'
+import { FuseBox, StyledComponentsPlugin, WebIndexPlugin } from 'fuse-box'
 
 const fuse = FuseBox.init({
   homeDir: '.',
@@ -13,12 +9,16 @@ const fuse = FuseBox.init({
   debug: true,
   plugins: [
     StyledComponentsPlugin({}),
-    WebIndexPlugin(),
+    WebIndexPlugin({ template: 'index.html' }),
   ],
 })
 
 fuse.dev()
 
-fuse.bundle('app').watch().hmr().instructions('> index.ts')
+fuse
+  .bundle('app')
+  .watch()
+  .hmr()
+  .instructions('> index.ts')
 
 fuse.run()
