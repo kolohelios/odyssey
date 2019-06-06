@@ -6,4 +6,4 @@ import 'jest-dom/extend-expect'
 it('renders welcome message', () => {
   const { getByText } = render(<Hero />)
   expect(getByText('Hello')).toBeInTheDocument()
-});
+})
